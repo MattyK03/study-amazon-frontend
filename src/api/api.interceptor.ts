@@ -1,9 +1,10 @@
 import axios from 'axios'
 
 import { errorCatch, getContentType } from './api.helper'
-import { getAccessToken } from '@/services/auth/auth.helper'
+import { getAccessToken, removeFromStorage } from '@/services/auth/auth.helper'
+import { AuthService } from '@/services/auth/auth.service'
 
-const instance = axios.create({
+export const instance = axios.create({
 	baseURL: process.env.SERVER_URL,
 	headers: getContentType()
 })
@@ -32,10 +33,15 @@ instance.interceptors.response.use(
 		) {
 			originalRequest._isRetry = true
 			try {
+				AuthService.getNewTokens()
 				return instance.request(originalRequest)
 			} catch (error) {
-				//     if (errorCatch(error) === 'jwt expired')
+				if (errorCatch(error) === 'jwt expired') {
+					removeFromStorage()
+				}
 			}
 		}
+
+		throw error
 	}
 )
