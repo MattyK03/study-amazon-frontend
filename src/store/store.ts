@@ -5,10 +5,10 @@ import {
 	PERSIST,
 	PURGE,
 	REGISTER,
-	REHYDRATE
+	REHYDRATE,
+	persistReducer,
+	persistStore
 } from 'redux-persist'
-import persistReducer from 'redux-persist/es/persistReducer'
-import persistStore from 'redux-persist/es/persistStore'
 import storage from 'redux-persist/es/storage'
 
 import { userSlice } from './user/user.slice'
