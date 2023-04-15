@@ -23,7 +23,6 @@ export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
 // login
 export const login = createAsyncThunk<IAuthResponse, IEmailPassword>(
 	'auth/login',
-
 	async (data, thunkApi) => {
 		try {
 			const response = await AuthService.main('login', data)
