@@ -9,10 +9,17 @@ type TypeData = {
 	text: string
 }
 
-export const reviewService = {
+export const ReviewService = {
 	async getAll() {
 		return instance<IReview[]>({
 			url: REVIEWS,
+			method: 'GET'
+		})
+	},
+
+	async getAverageByProduct(productId: string | number) {
+		return instance<number>({
+			url: `${REVIEWS}/average-by-product/${productId}`,
 			method: 'GET'
 		})
 	},
