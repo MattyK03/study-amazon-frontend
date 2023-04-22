@@ -3,11 +3,13 @@ import { FC } from 'react'
 
 import { IProduct } from '@/types/product.interface'
 
+import FavoriteButton from './FavoriteButton'
 import ProductRating from './ProductRating'
 import AddToCartButton from './addToCartButton'
-import FavoriteButton from './favoriteButton'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
+	const src = `${product.images[0]}`
+
 	return (
 		<div>
 			<div>
@@ -18,6 +20,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 					height={300}
 					src={product.images[0]}
 					alt={product.name}
+					loader={() => src}
 				/>
 			</div>
 			<h3>{product.name}</h3>

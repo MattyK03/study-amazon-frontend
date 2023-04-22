@@ -4,9 +4,9 @@ import Heading from '@/ui/Heading'
 import Meta from '@/ui/Meta'
 import Catalog from '@/ui/catalog/product-item/Catalog'
 
-import { TypeProducts } from '@/types/product.interface'
+import { TypePaginationProduct } from '@/types/product.interface'
 
-const Home: FC<TypeProducts> = ({ products }) => {
+const Home: FC<TypePaginationProduct> = ({ products, length }) => {
 	return (
 		<Meta title='Home'>
 			<Heading>Hello world!</Heading>
