@@ -22,7 +22,7 @@ export const AuthService = {
 	},
 
 	async getNewTokens() {
-		const refreshToken = Cookies.get('refresh-tokens')
+		const refreshToken = Cookies.get('refreshToken')
 
 		const response = await axiosClassic.post<
 			string,

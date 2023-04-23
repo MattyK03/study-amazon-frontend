@@ -5,5 +5,5 @@ export interface IReview {
 	user: IUserState
 	createdAt: string
 	text: string
-	rating: string
+	rating: number
 }
