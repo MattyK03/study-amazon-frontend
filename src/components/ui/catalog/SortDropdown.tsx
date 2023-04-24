@@ -1,11 +1,18 @@
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 
 import { EnumProductSort } from '@/services/product/product.types'
 
-const SortDropdown: FC = () => {
+interface ISortDropdown {
+	sortType: EnumProductSort
+	setSortType: Dispatch<SetStateAction<EnumProductSort>>
+}
+
+const SortDropdown: FC<ISortDropdown> = ({ setSortType, sortType }) => {
 	return (
 		<div className='text-right mb-5'>
 			<select
+				value={sortType}
+				onChange={e => setSortType(e.target.value as any)}
 				className='appearance-none w-36 py-0.5 px-2 bg-white rounded-md'
 				id='categoryFilter'
 			>
@@ -15,7 +22,11 @@ const SortDropdown: FC = () => {
 					>
 				).map(key => {
 					return (
-						<option value={EnumProductSort[key]}>
+						<option
+							key={key}
+							onChange={() => setSortType(EnumProductSort[key])}
+							value={EnumProductSort[key]}
+						>
 							{EnumProductSort[key]}
 						</option>
 					)

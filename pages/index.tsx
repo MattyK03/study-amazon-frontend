@@ -10,7 +10,7 @@ const HomePage: NextPage<TypePaginationProduct> = ({ length, products }) => {
 }
 
 export const getStaticProps: GetStaticProps<TypeProducts> = async () => {
-	const { data } = await ProductService.getAll({
+	const data = await ProductService.getAll({
 		page: 1,
 		perPage: 4
 	})

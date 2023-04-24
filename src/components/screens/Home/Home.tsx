@@ -20,7 +20,7 @@ const Home: FC<TypePaginationProduct> = ({ products, length }) => {
 
 				<CatalogPagination
 					title='Freshed products'
-					products={products || []}
+					data={{ products, length }}
 				/>
 			</Layout>
 		</Meta>
